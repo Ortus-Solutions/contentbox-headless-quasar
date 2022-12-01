@@ -1,0 +1,12 @@
+// app global css in SCSS form
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1{
+    font-size: 50px;
+}
+
+p {
+    font-size: 18px;
+}
