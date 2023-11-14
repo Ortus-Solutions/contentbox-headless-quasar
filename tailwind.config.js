@@ -1,6 +1,6 @@
 module.exports = {
 	important : true,
-	theme : {
+	theme     : {
 		fontFamily : {
 			system : [
 				"Roboto",
@@ -11,24 +11,22 @@ module.exports = {
 				"sans-serif"
 			]
 		},
-		minHeight: {
-			'1/2': '50%',
-		}
+		minHeight : { "1/2": "50%", }
 	},
-	variants: {},
-	plugins   : [
+	variants : {},
+	plugins  : [
 		require( "@tailwindcss/forms" ),
 		require( "@tailwindcss/typography" ),
 		require( "@tailwindcss/aspect-ratio" )
 	],
-	purge     : {
+	purge : {
 		content : [
 			"./src/**/*.vue",
 			"./src/**/*.js"
 		],
-		options: {
-			whitelist: [],
-			safelist: []
+		options : {
+			whitelist : [],
+			safelist  : []
 		}
 	}
 };

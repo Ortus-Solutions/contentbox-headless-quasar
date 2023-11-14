@@ -1,11 +1,14 @@
-# itb-quasar-app (itb-quasar-app)
+# ContentBox Headless Quasar App
 
-ITB Demo App
+This is a Quasar application talking to our headless CMS: ContentBox.
 
 ## Install the dependencies
 
 ```bash
+# Install App dependencies
 npm install
+# Install global CLI
+npm i -g @quasar/cli
 ```
 
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)

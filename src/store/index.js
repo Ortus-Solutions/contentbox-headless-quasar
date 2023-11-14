@@ -1,5 +1,5 @@
-import { store } from "quasar/wrappers";
-import { createStore } from "vuex";
+import {store } from "quasar/wrappers";
+import {createStore } from "vuex";
 
 import appstate from './appstate'
 
@@ -14,9 +14,7 @@ import appstate from './appstate'
 
 export default store(function (/* { ssrContext } */) {
   const Store = createStore({
-    modules: {
-      appstate
-    },
+    modules: {appstate},
 
     // enable strict mode (adds overhead!)
     // for dev mode and --debug builds only
