@@ -21,19 +21,31 @@ const mixins = {
 			// Decode token
 			try {
 				decode = decodeToken( token );
+
+				console.log( "decoded token" );
+				console.log( decode );
+
 				// Now( System date ) -  decode.exp * 1000 = exp date with ms TODO: check date format, it was using moment
 				if ( new Date() >= new Date( ( decode.exp * 1000 ) ) ){
 					response.isValid = false;
 					response.action = "reload";
+
+					console.log( "Token Expired" );
+					console.log( decode );
 				}
 			}
 			// Only has error if token is invalid
 			catch ( err ){
+
+				console.log( "Token Broken" );
+				console.log( err );
+
 				response.isValid = false;
-				response.action = "singIn";
+				response.action = "signin";
 			}
 			return response;
 		},
+
 		toInputDate( target ){
 			if ( !target || !target.length ){
 				return target;

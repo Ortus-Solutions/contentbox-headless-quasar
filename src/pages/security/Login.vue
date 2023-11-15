@@ -20,18 +20,31 @@
 
 		<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
 			<div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 space-y-6">
+				<div
+					class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+					role="alert"
+					v-show="this.errors.length > 0"
+				>
+					<div>
+						<strong class="font-bold">Error Logging In!</strong>
+					</div>
+					<div class="block sm:inline">
+						{{ errors.toString() }}
+					</div>
+				</div>
+
 				<div>
 					<label
-						for="email"
+						for="username"
 						class="block text-sm font-medium text-gray-700"
 					> Username </label>
 					<div class="mt-1">
 						<input
-							v-model="email"
-							id="email"
-							name="email"
-							type="email"
-							autocomplete="email"
+							v-model="username"
+							id="username"
+							name="username"
+							type="text"
+							autocomplete="username"
 							required
 							class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
 						>
@@ -137,23 +150,26 @@ import { defineComponent } from "vue";
 
 export default defineComponent( {
 	name : "Login",
+
 	data() {
 		return {
-			email    : "",
-			password : "",
+			username : "apiuser",
+			password : "T0pS3cr3t1234!",
 			errors   : []
 		};
 	},
-	mounted(){
-	},
+
+	mounted(){},
+
 	computed : {},
-	methods  : {
+
+	methods : {
 		login() {
 			// Start submit logic
 			this.$q.loading.show();
 			// Commit user id to modify state as a payload
 			this.$store.dispatch( "appstate/login", {
-				username : this.email,
+				username : this.username,
 				password : this.password
 			} )
 				.then( ( userInfo ) => {
@@ -173,7 +189,7 @@ export default defineComponent( {
 
 					// Reset + Notify
 					this.$q.loading.hide();
-					this.email = "";
+					this.username = "";
 					this.password = "";
 				} );
 		}

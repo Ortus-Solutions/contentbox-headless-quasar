@@ -7,12 +7,36 @@ import _ from "lodash";
  * The purpose is for every request to have a valid user data loaded.
  */
 export const loadRequestData = async( { dispatch, state, commit, rootState } ) => {
-	// verify if user is empty and the jwt token is not present
-	if ( _.isEmpty( state.currentUser ) || !state.jwt.length ) {
-		// login( { dispatch, state, commit, rootState }, {
-		// 	username : "javiapi",
-		// 	password : "Itb2022!"
-		// } );
+	// verify if user is empty
+	if ( _.isEmpty( state.currentUser ) ){
+
+		// Try to inflate the key from the local storage
+		if ( !state.jwt.length ){
+			if ( LocalStorage.has( "session-jwt" ) ){
+				// Inflate tokens
+				commit( "saveJwt", {
+					"access_token"  : LocalStorage.getItem( "session-jwt" ),
+					"refresh_token" : LocalStorage.getItem( "x-authorization" )
+				} );
+			} else {
+				// Nothing to inflate, break out!
+				return;
+			}
+		}
+
+		// Try to load up the user data using the jwt token
+		// We wait so we can sync back the user into the state
+		// This is required in case routing or any other interceptors need to verify
+		// permissions
+		await api.get( "/whoami" )
+			.then( response => {
+				// Store up the user data again
+				commit( "loginUser", response.data.data );
+			} )
+			.catch( error => {
+				console.error( error );
+			} );
+
 	}
 };
 
