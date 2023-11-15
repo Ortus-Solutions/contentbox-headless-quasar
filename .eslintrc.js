@@ -126,7 +126,8 @@ module.exports = {
 				"asyncArrow" : "never"
 			}
 		],
-		"vue/html-indent" : [
+		"vue/multi-word-component-names" : "off",
+		"vue/html-indent"                : [
 			"error",
 			"tab"
 		],
