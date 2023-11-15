@@ -1,8 +1,8 @@
 <template>
 	<div class="max-w-7xl mx-auto pt-6 pb-2 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-		<div
-			v-if="pageContent != ''"
-			v-html="pageContent"
+		<MediaContent
+			v-if="pageContent.length > 0"
+			:content="pageContent"
 		/>
 		<div v-else-if="!loading">
 			About
@@ -11,12 +11,11 @@
 </template>
 
 <script>
+import MediaContent from "src/components/MediaContent.vue";
 
-import { defineComponent } from "vue";
-
-export default defineComponent( {
-	name  : "About",
-	props : {
+export default {
+	components : { MediaContent },
+	props      : {
 		title : { // Page name
 			type    : String,
 			default : "ContentBox Headless Quasar - About"
@@ -60,5 +59,5 @@ export default defineComponent( {
 				} );
 		}
 	}
-} );
+};
 </script>

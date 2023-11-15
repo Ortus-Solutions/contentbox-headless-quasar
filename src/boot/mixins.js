@@ -72,6 +72,10 @@ const mixins = {
 				return target;
 			}
 			return date.formatDate( target, "MMMM-DD-YYYY @ HH:MM:SS" );
+		},
+
+		correctMediaURL( content ) {
+			return content.replaceAll( "src=\"/__media/", `src="${process.env.apiUrl}/__media/` );
 		}
 	}
 
