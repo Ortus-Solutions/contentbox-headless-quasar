@@ -61,7 +61,7 @@ const mixins = {
 			}
 			return date.formatDate( target, "MMMM-DD-YYYY @ HH:MM:SS" );
 		}
-    }
+	}
 
 };
 

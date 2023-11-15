@@ -8,9 +8,9 @@ import axios from "axios";
 // good idea to move this instance creation inside of the
 // "export default () => {}" function below (which runs individually
 // for each client)
-const api = axios.create({ baseURL: "http://127.0.0.1:61670/cbapi/v1" });
+const api = axios.create( { baseURL: process.env.apiUrl } );
 
-export default boot(({ app, store }) => {
+export default boot( ( { app, store } ) => {
 	// for use inside Vue files (Options API) through this.$axios and this.$api
 	app.config.globalProperties.$axios = axios;
 	// ^ ^ ^ this will allow you to use this.$axios (for Vue Options API form)
@@ -24,10 +24,10 @@ export default boot(({ app, store }) => {
 	api.interceptors.request.use(
 		config => {
 			// TODO: Add refresh tokens
-			if (config.baseURL.concat(config.url) == config.baseURL.concat("/refreshToken")) {
-				config.headers["x-refresh-token"] = LocalStorage.getItem("x-authorization");
+			if ( config.baseURL.concat( config.url ) == config.baseURL.concat( "/refreshToken" ) ) {
+				config.headers["x-refresh-token"] = LocalStorage.getItem( "x-authorization" );
 			} else {
-				config.headers["authorization"] = "Bearer " + LocalStorage.getItem("session-jwt");
+				config.headers["authorization"] = "Bearer " + LocalStorage.getItem( "session-jwt" );
 			}
 			return config;
 
@@ -35,7 +35,7 @@ export default boot(({ app, store }) => {
 			// return config;
 		},
 		error => {
-			return Promise.reject(error);
+			return Promise.reject( error );
 		}
 	);
 
@@ -81,6 +81,6 @@ export default boot(({ app, store }) => {
 	// 	await setTimeout( function() { window.location.href = "/login"; }, 5000 );
 	// }
 
-});
+} );
 
 export { api };

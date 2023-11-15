@@ -1,6 +1,9 @@
 <template>
-    <div class="max-w-7xl mx-auto pt-6 pb-2 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-		<div v-if="pageContent != ''" v-html="pageContent" />
+	<div class="max-w-7xl mx-auto pt-6 pb-2 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+		<div
+			v-if="pageContent != ''"
+			v-html="pageContent"
+		/>
 		<div v-else-if="!loading">
 			Store
 		</div>
@@ -11,12 +14,12 @@
 
 import { defineComponent } from "vue";
 
-export default defineComponent({
-	name: "Homepage",
+export default defineComponent( {
+	name  : "Homepage",
 	props : {
 		title : { // Page name
 			type    : String,
-			default : "ITB Demo App - Store"
+			default : "ContentBox Headless Quasar - Store"
 		},
 		icon : {  // Icon Class
 			type    : String,
@@ -26,8 +29,8 @@ export default defineComponent({
 
 	data(){
 		return {
-			pageContent: "",
-			loading: false
+			pageContent : "",
+			loading     : false
 		};
 	},
 	computed : {},
@@ -40,23 +43,23 @@ export default defineComponent({
 			app.loading = true;
 			app.$q.loading.show();
 			// Dispatch
-			app.$api.get( `sites/default/pages/about` )
+			app.$api.get( "sites/default/pages/about" )
 				.then( response => {
-					if( !response.data.error && "activeContent" in response.data.data ) {
+					if ( !response.data.error && "activeContent" in response.data.data ) {
 						app.pageContent = response.data.data.activeContent.content;
 					} else {
 						// Show error
-						app.pageContent = "Page not found!"
+						app.pageContent = "Page not found!";
 					}
 					app.loading = false;
 					app.$q.loading.hide();
 				} )
 				.catch( ( error ) => {
-					console.log(error);
+					console.log( error );
 					app.loading = false;
 					app.$q.loading.hide();
 				} );
 		}
 	}
-});
+} );
 </script>

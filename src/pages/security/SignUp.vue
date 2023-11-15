@@ -1,71 +1,146 @@
 <template>
-    <div class="bg-gray-100 min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-        <div class="sm:mx-auto sm:w-full sm:max-w-md">
-            <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-blue-600.svg" alt="Workflow">
-            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Create an account</h2>
-            <p class="mt-2 text-center text-sm text-gray-600">
-            Or
-            <a href="#" class="font-medium text-blue-600 hover:text-blue-500"> sign in now </a>
-            </p>
-        </div>
+	<div class="bg-gray-100 min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+		<div class="sm:mx-auto sm:w-full sm:max-w-md">
+			<img
+				class="mx-auto h-12 w-auto"
+				src="https://tailwindui.com/img/logos/workflow-mark-blue-600.svg"
+				alt="Workflow"
+			>
+			<h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+				Create an account
+			</h2>
+			<p class="mt-2 text-center text-sm text-gray-600">
+				Or
+				<a
+					href="#"
+					class="font-medium text-blue-600 hover:text-blue-500"
+				> sign in now </a>
+			</p>
+		</div>
 
-        <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-            <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 space-y-6">
-                <div>
-                    <label for="firstName" class="block text-sm font-medium text-gray-700"> First Name </label>
-                    <div class="mt-1">
-                        <input v-model="firstName" id="firstName" name="firstName" type="text" autocomplete="given-name" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                    </div>
-                </div>
-                <div>
-                    <label for="lastName" class="block text-sm font-medium text-gray-700"> Last Name </label>
-                    <div class="mt-1">
-                        <input v-model="lastName" id="lastName" name="lastName" type="text" autocomplete="family-name" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                    </div>
-                </div>
-                <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700"> Email Address </label>
-                    <div class="mt-1">
-                        <input v-model="email" id="email" name="email" type="email" autocomplete="email" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                    </div>
-                </div>
+		<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+			<div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 space-y-6">
+				<div>
+					<label
+						for="firstName"
+						class="block text-sm font-medium text-gray-700"
+					> First Name </label>
+					<div class="mt-1">
+						<input
+							v-model="firstName"
+							id="firstName"
+							name="firstName"
+							type="text"
+							autocomplete="given-name"
+							required
+							class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+						>
+					</div>
+				</div>
+				<div>
+					<label
+						for="lastName"
+						class="block text-sm font-medium text-gray-700"
+					> Last Name </label>
+					<div class="mt-1">
+						<input
+							v-model="lastName"
+							id="lastName"
+							name="lastName"
+							type="text"
+							autocomplete="family-name"
+							required
+							class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+						>
+					</div>
+				</div>
+				<div>
+					<label
+						for="email"
+						class="block text-sm font-medium text-gray-700"
+					> Email Address </label>
+					<div class="mt-1">
+						<input
+							v-model="email"
+							id="email"
+							name="email"
+							type="email"
+							autocomplete="email"
+							required
+							class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+						>
+					</div>
+				</div>
 
-                <div>
-                    <label for="password" class="block text-sm font-medium text-gray-700"> Password </label>
-                    <div class="mt-1">
-                        <input v-model="password" id="password" name="password" type="password" autocomplete="new-password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                    </div>
-                </div>
+				<div>
+					<label
+						for="password"
+						class="block text-sm font-medium text-gray-700"
+					> Password </label>
+					<div class="mt-1">
+						<input
+							v-model="password"
+							id="password"
+							name="password"
+							type="password"
+							autocomplete="new-password"
+							required
+							class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+						>
+					</div>
+				</div>
 
-                <div>
-                    <label for="confirmPassword" class="block text-sm font-medium text-gray-700"> Confirm Password </label>
-                    <div class="mt-1">
-                        <input v-model="confirmPassword" id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                    </div>
-                </div>
+				<div>
+					<label
+						for="confirmPassword"
+						class="block text-sm font-medium text-gray-700"
+					> Confirm Password </label>
+					<div class="mt-1">
+						<input
+							v-model="confirmPassword"
+							id="confirmPassword"
+							name="confirmPassword"
+							type="password"
+							autocomplete="new-password"
+							required
+							class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+						>
+					</div>
+				</div>
 
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center">
-                        <input id="terms-conditions" name="terms-conditions" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                        <label for="terms-conditions" class="ml-2 block text-sm text-gray-900"> Acepta la letra menuda </label>
-                    </div>
+				<div class="flex items-center justify-between">
+					<div class="flex items-center">
+						<input
+							id="terms-conditions"
+							name="terms-conditions"
+							type="checkbox"
+							class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+						>
+						<label
+							for="terms-conditions"
+							class="ml-2 block text-sm text-gray-900"
+						> Acepta la letra menuda </label>
+					</div>
 
-                    <div class="text-sm">
-                        <a href="#" class="font-medium text-blue-600 hover:text-blue-500"> Forgot your password? </a>
-                    </div>
-                </div>
+					<div class="text-sm">
+						<a
+							href="#"
+							class="font-medium text-blue-600 hover:text-blue-500"
+						> Forgot your password? </a>
+					</div>
+				</div>
 
-                <div>
-                    <button 
-                        type="button"
-                        class="block w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900"
-                        @click="register"
-                    >
-                        Create
-                    </button>
-                </div>
+				<div>
+					<button
+						type="button"
+						class="block w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900"
+						@click="register"
+					>
+						Create
+					</button>
+				</div>
 
-            <!-- <div class="mt-6">
+				<!-- <div class="mt-6">
                 <div class="relative">
                 <div class="absolute inset-0 flex items-center">
                     <div class="w-full border-t border-gray-300"></div>
@@ -104,72 +179,70 @@
                 </div>
                 </div>
             </div> -->
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
 import { defineComponent } from "vue";
 
-export default defineComponent({
-    name: "SignUp",
-    data() {
-            return {
-                firstName: "",
-                lastName: "",
-                email : "",
-                password : "",
-                confirmPassword : ""
-            }
-        },	
-    mounted(){
+export default defineComponent( {
+	name : "SignUp",
+	data() {
+		return {
+			firstName       : "",
+			lastName        : "",
+			email           : "",
+			password        : "",
+			confirmPassword : ""
+		};
 	},
-    computed : {
-
-    },
-	methods : {
-        register() {
-            // Start submit logic
+	mounted(){
+	},
+	computed : {},
+	methods  : {
+		register() {
+			// Start submit logic
 			this.$q.loading.show();
-            // Commit user id to modify state as a payload
-            this.$api.post( "/register", {
-                firstName : this.firstName,
-                lastName : this.lastName,
-                email : this.email,
-                password : this.password,
-                confirmPassword : this.confirmPassword
-            } )
-                .then( ( response ) => {
-                    this.$q.notify( {
-                        color    : "positive",
-                        position : "top-right",
-                        message  : "User Account Created Successfully!"
-                    } );
-                    this.$q.loading.hide();
-                    // Prevent vue router stuck issue when an user is logged in at the first time
-                    // setTimeout( function() { window.location.href = "/"; }, 300 );
-                } )
-                .catch( ( error ) => {
-                    console.log( error );
-                    // Setup Errrors
-                    if ( error.response ){
-                        this.errors = error.response.data.messages;
-                        this.$q.notify( {
-                            color    : "negative",
-                            position : "top-right",
-                            message  : error.response.data.messages[0]
-                        } );
-                    } else {
-                        this.errors = error.message;
-                    }
+			// Commit user id to modify state as a payload
+			this.$api.post( "/register", {
+				firstName       : this.firstName,
+				lastName        : this.lastName,
+				email           : this.email,
+				password        : this.password,
+				confirmPassword : this.confirmPassword
+			} )
+				.then( ( response ) => {
+					this.$q.notify( {
+						color    : "positive",
+						position : "top-right",
+						message  : "User Account Created Successfully!"
+					} );
+					this.$q.loading.hide();
+					// Prevent vue router stuck issue when an user is logged in at the first time
+					// setTimeout( function() { window.location.href = "/"; }, 300 );
+				} )
+				.catch( ( error ) => {
+					console.log( error );
+					// Setup Errrors
+					if ( error.response ){
+						this.errors = error.response.data.messages;
+						this.$q.notify( {
+							color    : "negative",
+							position : "top-right",
+							message  : error.response.data.messages[0]
+						} );
+					} else {
+						this.errors = error.message;
+					}
 
-                    // Reset + Notify
-                    this.$q.loading.hide();
-                    this.email = "";
-                    this.password = "";
-                } );
-        }
-    }
-});
+					// Reset + Notify
+					this.$q.loading.hide();
+					this.email = "";
+					this.password = "";
+				} );
+		}
+	}
+} );
 </script>

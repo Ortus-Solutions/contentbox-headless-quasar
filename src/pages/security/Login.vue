@@ -1,52 +1,94 @@
 <template>
-    <div class="bg-gray-100 min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-        <div class="sm:mx-auto sm:w-full sm:max-w-md">
-            <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-blue-600.svg" alt="Workflow">
-            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
-            <p class="mt-2 text-center text-sm text-gray-600">
-            Or
-            <a href="/signup" class="font-medium text-blue-600 hover:text-blue-500"> create an account now </a>
-            </p>
-        </div>
+	<div class="bg-gray-100 min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+		<div class="sm:mx-auto sm:w-full sm:max-w-md">
+			<img
+				class="mx-auto h-12 w-auto"
+				src="https://tailwindui.com/img/logos/workflow-mark-blue-600.svg"
+				alt="Workflow"
+			>
+			<h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+				Sign in to your account
+			</h2>
+			<p class="mt-2 text-center text-sm text-gray-600">
+				Or
+				<a
+					href="/signup"
+					class="font-medium text-blue-600 hover:text-blue-500"
+				> create an account now </a>
+			</p>
+		</div>
 
-        <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-            <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 space-y-6">
-                <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700"> Username </label>
-                    <div class="mt-1">
-                        <input v-model="email" id="email" name="email" type="email" autocomplete="email" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                    </div>
-                </div>
+		<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+			<div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 space-y-6">
+				<div>
+					<label
+						for="email"
+						class="block text-sm font-medium text-gray-700"
+					> Username </label>
+					<div class="mt-1">
+						<input
+							v-model="email"
+							id="email"
+							name="email"
+							type="email"
+							autocomplete="email"
+							required
+							class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+						>
+					</div>
+				</div>
 
-                <div>
-                    <label for="password" class="block text-sm font-medium text-gray-700"> Password </label>
-                    <div class="mt-1">
-                        <input v-model="password" id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                    </div>
-                </div>
+				<div>
+					<label
+						for="password"
+						class="block text-sm font-medium text-gray-700"
+					> Password </label>
+					<div class="mt-1">
+						<input
+							v-model="password"
+							id="password"
+							name="password"
+							type="password"
+							autocomplete="current-password"
+							required
+							class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+						>
+					</div>
+				</div>
 
-                <div class="flex items-center justify-between my-3">
-                    <div class="flex items-center">
-                        <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                        <label for="remember-me" class="ml-2 block text-sm text-gray-900"> Remember me </label>
-                    </div>
+				<div class="flex items-center justify-between my-3">
+					<div class="flex items-center">
+						<input
+							id="remember-me"
+							name="remember-me"
+							type="checkbox"
+							class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+						>
+						<label
+							for="remember-me"
+							class="ml-2 block text-sm text-gray-900"
+						> Remember me </label>
+					</div>
 
-                    <div class="text-sm">
-                        <a href="#" class="font-medium text-blue-600 hover:text-blue-500"> Forgot your password? </a>
-                    </div>
-                </div>
+					<div class="text-sm">
+						<a
+							href="#"
+							class="font-medium text-blue-600 hover:text-blue-500"
+						> Forgot your password? </a>
+					</div>
+				</div>
 
-                <div>
-                    <button 
-                        class="block w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900"
-                        @click="login"
-                    >
-                        Sign in
-                    </button>
-                </div>
+				<div>
+					<button
+						class="block w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900"
+						@click="login"
+					>
+						Sign in
+					</button>
+				</div>
 
-            <!-- More login options -->
-            <!-- <div class="mt-6">
+				<!-- More login options -->
+				<!-- <div class="mt-6">
                 <div class="relative">
                 <div class="absolute inset-0 flex items-center">
                     <div class="w-full border-t border-gray-300"></div>
@@ -85,58 +127,56 @@
                 </div>
                 </div>
             </div> -->
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
 import { defineComponent } from "vue";
 
-export default defineComponent({
-    name: "Login",
-    data() {
-            return {
-                email    : "",
-                password : "",
-                errors   : []
-            }
-        },	
-    mounted(){
+export default defineComponent( {
+	name : "Login",
+	data() {
+		return {
+			email    : "",
+			password : "",
+			errors   : []
+		};
 	},
-    computed : {
-
-    },
-	methods : {
-        login() {
-            // Start submit logic
+	mounted(){
+	},
+	computed : {},
+	methods  : {
+		login() {
+			// Start submit logic
 			this.$q.loading.show();
-            // Commit user id to modify state as a payload
-            this.$store.dispatch( "appstate/login", {
-                username : this.email,
-                password : this.password
-            } )
-                .then( ( userInfo ) => {
-                    var app = this;
-                    this.$q.loading.hide();
-                    // Prevent vue router stuck issue when an user is logged in at the first time
-                    setTimeout( function() { app.$router.push( { "name": "home" } ) }, 100 );
-                } )
-                .catch( ( error ) => {
-                    console.log( error );
-                    // Setup Errrors
-                    if ( error.response ){
-                        this.errors = error.response.data.messages;
-                    } else {
-                        this.errors = error.message;
-                    }
+			// Commit user id to modify state as a payload
+			this.$store.dispatch( "appstate/login", {
+				username : this.email,
+				password : this.password
+			} )
+				.then( ( userInfo ) => {
+					var app = this;
+					this.$q.loading.hide();
+					// Prevent vue router stuck issue when an user is logged in at the first time
+					setTimeout( function() { app.$router.push( { "name": "home" } ); }, 100 );
+				} )
+				.catch( ( error ) => {
+					console.log( error );
+					// Setup Errrors
+					if ( error.response ){
+						this.errors = error.response.data.messages;
+					} else {
+						this.errors = error.message;
+					}
 
-                    // Reset + Notify
-                    this.$q.loading.hide();
-                    this.email = "";
-                    this.password = "";
-                } );
-        }
-    }
-});
+					// Reset + Notify
+					this.$q.loading.hide();
+					this.email = "";
+					this.password = "";
+				} );
+		}
+	}
+} );
 </script>

@@ -6,13 +6,13 @@ import _ from "lodash";
  * Verifies if the store has the user info, else checks the local storage
  * The purpose is for every request to have a valid user data loaded.
  */
-export const loadRequestData = async ({ dispatch, state, commit, rootState }) => {
+export const loadRequestData = async( { dispatch, state, commit, rootState } ) => {
 	// verify if user is empty and the jwt token is not present
-	if (_.isEmpty(state.currentUser) || !state.jwt.length) {
-		login({ dispatch, state, commit, rootState }, {
-			username: "javiapi",
-			password: "Itb2022!"
-		});
+	if ( _.isEmpty( state.currentUser ) || !state.jwt.length ) {
+		// login( { dispatch, state, commit, rootState }, {
+		// 	username : "javiapi",
+		// 	password : "Itb2022!"
+		// } );
 	}
 };
 
@@ -23,28 +23,28 @@ export const loadRequestData = async ({ dispatch, state, commit, rootState }) =>
  *
  * @return {Promise}
  */
-export const login = ({ getters, state, commit, dispatch }, payload) => {
-	return new Promise((resolve, reject) => {
+export const login = ( { getters, state, commit, dispatch }, payload ) => {
+	return new Promise( ( resolve, reject ) => {
 		api.post(
 			"/login",
 			payload
 		)
-			.then(response => {
+			.then( response => {
 				// Check errors in case, but very unusual we get a 200 with an error bit
-				if (!response.data.error) {
+				if ( !response.data.error ) {
 					// Call our mutations
-					commit("loginUser", response.data.data.author);
-					commit("saveJwt", response.data.data.tokens);
+					commit( "loginUser", response.data.data.author );
+					commit( "saveJwt", response.data.data.tokens );
 					// Config UI
-					resolve(response.data.data.user);
+					resolve( response.data.data.user );
 				} else {
-					reject(new Error(response.data.messages));
+					reject( new Error( response.data.messages ) );
 				}
-			})
-			.catch(error => {
-				reject(error);
-			});
-	});
+			} )
+			.catch( error => {
+				reject( error );
+			} );
+	} );
 };
 
 /**
@@ -53,9 +53,9 @@ export const login = ({ getters, state, commit, dispatch }, payload) => {
  *
  * @param {boolean} cleanup - If true, we will only do cleanup, by default it cleans up and calls the API for logout
  */
-export const logout = ({ getters, state, commit }, cleanup = false) => {
+export const logout = ( { getters, state, commit }, cleanup = false ) => {
 	// Call logout and forget about it
-	if (!cleanup) {
+	if ( !cleanup ) {
 		api.post(
 			"/logout",
 			{ "x-auth-token": state.jwt }
@@ -63,7 +63,7 @@ export const logout = ({ getters, state, commit }, cleanup = false) => {
 	}
 
 	// Cleanup the store
-	commit("logoutUser");
+	commit( "logoutUser" );
 };
 
 /**
@@ -71,21 +71,21 @@ export const logout = ({ getters, state, commit }, cleanup = false) => {
  *
  * @returns { access_token, refresh_foken }
  */
-export const refreshToken = ({ getters, state, commit, dispatch }) => {
-	return new Promise((resolve, reject) => {
-		$axios.post("/refreshToken")
-			.then(response => {
+export const refreshToken = ( { getters, state, commit, dispatch } ) => {
+	return new Promise( ( resolve, reject ) => {
+		$axios.post( "/refreshToken" )
+			.then( response => {
 				// Check errors in case, but very unusual we get a 200 with an error bit
-				if (!response.data.error) {
+				if ( !response.data.error ) {
 					// Call our mutations
-					commit("saveJwt", response.data.data);
-					resolve(response.data.data);
+					commit( "saveJwt", response.data.data );
+					resolve( response.data.data );
 				} else {
-					reject(new Error(response.data.messages));
+					reject( new Error( response.data.messages ) );
 				}
-			})
-			.catch(error => {
-				reject(error);
-			});
-	});
+			} )
+			.catch( error => {
+				reject( error );
+			} );
+	} );
 };

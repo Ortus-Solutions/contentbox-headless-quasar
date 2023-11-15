@@ -1,9 +1,9 @@
 import { route } from "quasar/wrappers";
 import {
-  createRouter,
-  createMemoryHistory,
-  createWebHistory,
-  createWebHashHistory,
+	createRouter,
+	createMemoryHistory,
+	createWebHistory,
+	createWebHashHistory,
 } from "vue-router";
 import routes from "./routes";
 import { mixins } from "../boot/mixins";
@@ -17,26 +17,26 @@ import { mixins } from "../boot/mixins";
  * with the Router instance.
  */
 
-export default route(function ( { store, ssrContext } ) {
-  const createHistory = process.env.SERVER
-    ? createMemoryHistory
-    : process.env.VUE_ROUTER_MODE === "history"
-    ? createWebHistory
-    : createWebHashHistory;
+export default route( function( { store, ssrContext } ) {
+	const createHistory = process.env.SERVER
+		? createMemoryHistory
+		: process.env.VUE_ROUTER_MODE === "history"
+			? createWebHistory
+			: createWebHashHistory;
 
-  const Router = createRouter({
-    scrollBehavior: () => ({ left: 0, top: 0 }),
-    routes,
+	const Router = createRouter( {
+		scrollBehavior : () => ( { left: 0, top: 0 } ),
+		routes,
 
-    // Leave this as is and make changes in quasar.conf.js instead!
-    // quasar.conf.js -> build -> vueRouterMode
-    // quasar.conf.js -> build -> publicPath
-    history: createHistory(
-      process.env.MODE === "ssr" ? void 0 : process.env.VUE_ROUTER_BASE
-    ),
-  });
+		// Leave this as is and make changes in quasar.conf.js instead!
+		// quasar.conf.js -> build -> vueRouterMode
+		// quasar.conf.js -> build -> publicPath
+		history : createHistory(
+			process.env.MODE === "ssr" ? void 0 : process.env.VUE_ROUTER_BASE
+		),
+	} );
 
-  /**
+	/**
 	 * Global Interceptor before each route to secure it and load necessary request data
 	 * by checking the meta fields:
 	 * - secure : Need to be authenticated
@@ -50,15 +50,15 @@ export default route(function ( { store, ssrContext } ) {
 				// Verify `secure` route. Then permissions
 				if ( isSecure( to ) ) {
 					// vue router permissions by route
-					let permissions = getPermissions( to );
+					// let permissions = getPermissions( to );
 					// Are we logged in? yes
 					if ( store.getters[ "appstate/isLoggedIn" ] ) {
 						// mixins.methods.hasPermission( store, permissions ) ? next() : onUnauthorizedRequest( next );
-            next();
+						next();
 					}
 					// Not Logged in
 					else {
-						// onUnauthenticatedRequest( next );
+						onUnauthenticatedRequest( next );
 					}
 				}
 				// Proceed as normal
@@ -71,8 +71,8 @@ export default route(function ( { store, ssrContext } ) {
 			} );
 	} );
 
-  return Router;
-});
+	return Router;
+} );
 
 
 /**
@@ -89,15 +89,17 @@ function onUnauthorizedRequest( next ){
 	} );
 	next( "/dashboard" );
 }
+
 /**
  * On unauthenticatedRequest validation
  * @param { Router next } next
  * @return redirect to login page
  */
 function onUnauthenticatedRequest( next ){
-	console.log( "Router redirect" );
+	console.log( "Not logged in, redirecting to login" );
 	return next( "login" );
 }
+
 /**
  * Validate login access
  * @param { String } to

@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
 	<div class="fixed z-50 inset-0 flex items-end justify-center px-4 py-6 pointer-events-none sm:mt-12 sm:p-6 sm:items-start sm:justify-end">
 		<transition
@@ -108,8 +109,8 @@
 <script>
 import { defineComponent } from "vue";
 
-export default defineComponent({
-	name: "Notifications",
+export default defineComponent( {
+	name  : "Notifications",
 	props : {
 		type : {
 			type    : String,
@@ -152,8 +153,6 @@ export default defineComponent({
 	mounted() {
 
 	},
-	computed: {
-
-	}
-});
+	computed : {}
+} );
 </script>
