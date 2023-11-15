@@ -11,7 +11,10 @@
 								alt="Workflow"
 							>
 						</div>
-						<div class="hidden md:block flex-shrink-0">
+						<div
+							v-if="isLoggedIn"
+							class="hidden md:block flex-shrink-0"
+						>
 							<div class="ml-10 flex items-baseline space-x-4">
 								<!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
 								<a
@@ -93,7 +96,7 @@
 											class="block px-4 py-3 text-sm text-gray-300 font-medium"
 										>
 											<span class="block text-base font-bold">
-												{{ currentUser.fullName }}
+												{{ fullName }}
 											</span>
 											<span class="block">
 												{{ currentUser.email }}
@@ -118,7 +121,7 @@
 					>
 						<a
 							href="/login"
-							class="text-gray-300 hover:bg-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+							class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
 						>Login</a>
 					</div>
 
@@ -135,10 +138,9 @@
 						>
 							<span class="sr-only">Open main menu</span>
 							<!--
-                Heroicon name: outline/menu
-
-                Menu open: "hidden", Menu closed: "block"
-              -->
+								Heroicon name: outline/menu
+								Menu open: "hidden", Menu closed: "block"
+							-->
 							<svg
 								class="block h-6 w-6"
 								xmlns="http://www.w3.org/2000/svg"
@@ -155,10 +157,9 @@
 								/>
 							</svg>
 							<!--
-                Heroicon name: outline/x
-
-                Menu open: "block", Menu closed: "hidden"
-              -->
+								Heroicon name: outline/x
+								Menu open: "block", Menu closed: "hidden"
+							-->
 							<svg
 								class="hidden h-6 w-6"
 								xmlns="http://www.w3.org/2000/svg"
@@ -278,6 +279,7 @@
 			</div>
 		</nav>
 
+		<!-- NOTIFICATIONS -->
 		<div class="bg-gray-100 min-h-full pb-6">
 			<notifications
 				:type="notification.type"
@@ -287,15 +289,16 @@
 			<router-view />
 		</div>
 
+		<!-- FOOTER -->
 		<footer class="bg-gray-800">
 			<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
 				<div class="py-8 text-sm text-white text-center sm:text-left">
-					<span class="block sm:inline">
-						&copy; ContentBox Headless Quasar
-					</span>
-					<span class="block sm:inline">
+					<div class="block sm:inline font-bold">
+						&copy; Ortus Solutions, Corp
+					</div>
+					<div class="block sm:inline">
 						All rights reserved.
-					</span>
+					</div>
 				</div>
 			</div>
 		</footer>
@@ -308,6 +311,7 @@ import Autocomplete from "vue3-autocomplete";
 import vClickOutside from "click-outside-vue3";
 import { defineComponent, ref } from "vue";
 import { mapState, mapGetters, mapMutations } from "vuex";
+import { is } from "quasar";
 
 export default defineComponent( {
 	name       : "MainLayout",
@@ -338,6 +342,10 @@ export default defineComponent( {
 			currentUser     : state => state.appstate.currentUser,
 			languageOptions : state => state.appstate.languageOptions
 		} ),
+
+		fullName(){
+			return this.currentUser.firstName + " " + this.currentUser.lastName;
+		},
 
 		...mapGetters( "appstate", [
 			"getUserId",

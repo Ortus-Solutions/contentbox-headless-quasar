@@ -1,17 +1,21 @@
 <template>
 	<div>
-		Media Content
 		<div
+			class="mediaContent"
 			v-if="content.length"
 			v-html="mediaContent"
 		/>
-		<!-- <textarea
-			v-text="content"
-			rows="15"
-			cols="80"
-		/> -->
 	</div>
 </template>
+
+<style>
+.mediaContent {
+	& img {
+		margin: 20px 0px;
+		border: 1px solid #ddd;
+	}
+}
+</style>
 
 <script>
 import { defineComponent } from "vue";
@@ -38,7 +42,7 @@ export default defineComponent( {
 
 	methods : {
 		correctMediaURL( content ) {
-			return content.replaceAll( "src=\"/__media/", `src="${process.env.apiUrl}/__media/` );
+			return content.replaceAll( "src=\"/__media/", `src="${process.env.imagesUrl}/__media/` );
 		}
 	}
 

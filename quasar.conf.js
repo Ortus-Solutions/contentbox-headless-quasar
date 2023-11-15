@@ -49,7 +49,8 @@ module.exports = configure( function( ctx ) {
 					appName     : "ContentBox Headless Quasar",
 					appVersion  : "1.0.0",
 					environment : "development",
-					apiUrl      : "http://127.0.0.1:61670/cbapi/v1"
+					apiUrl      : "http://127.0.0.1:61670/cbapi/v1",
+					imagesUrl   : "http://127.0.0.1:61670"
 				};
 
 				return baseConfig;
